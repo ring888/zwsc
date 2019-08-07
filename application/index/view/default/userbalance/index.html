@@ -1,0 +1,211 @@
+{{include file="public/header" /}}
+<style type="text/css">
+/**
+ * 用户中心
+ */
+ .user-base, ul.order-base{overflow: hidden;}
+ .user-base{-webkit-animation: changeBg 20s infinite; -moz-animation: changeBg 20s infinite; animation: changeBg 20s infinite; background-color: #ED5564; background-image: url({{$Think.__MY_ROOT__}}static/index/{{$default_theme}}/images/member_top_bg.png); background-size: cover; width: 100%; position: relative; padding: 20px 10px;}
+ .user-base p, .user-base span, .user-base a{color: #fff;}
+ .user-base a, .order-base a, .order-nav a{text-decoration: none;}
+ .user-avatar{text-align: center;}
+ .user-avatar .user-name{font-weight: 500;}
+ .user-avatar img{width: 80px; height: 80px; border-radius: 100%;}
+ .user-avatar .user-name{margin-top: 5px;}
+ .user-base-left .items a{color: #f8f8f8;}
+ .user-base-right a:not(:last-child){margin-right: 15px;}
+ ul.user-base-icon{background: rgba(0,0,0,0.1); position: absolute;}
+ .order-nav{padding: 10px 5px; border-bottom: 1px solid #f1f1f1;}
+ .order-nav i{width: 20px; height: 20px; background-repeat: no-repeat; background-position: 50% 50%; background-size: 70%; display: inline-block; vertical-align: bottom;}
+ .order-nav .nav-name i.order-icon{background-image: url(../images/user-index-nav-order-icon.png);}
+ .order-nav .icon-tips, .order-base a{color: #888;}
+ .order-nav .icon-tips i{padding-left: 5px;}
+ ul.order-base{margin-bottom: 10px; border-bottom: 1px solid #f1f1f1; padding: 13px 0 5px 0;}
+ ul.order-base li{float: left; width: 25%; text-align: center; position: relative;}
+ ul.order-base li i{width: 20px; height: 20px; background-repeat: no-repeat; display: inline-block; vertical-align: bottom; opacity: 0.5; background-size: cover; margin-bottom: 2px;}
+ ul.order-base i.icon-1{background-image: url(../images/user-index-nav-order-icon-1.png);}
+ ul.order-base i.icon-2{background-image: url(../images/user-index-nav-order-icon-2.png);}
+ ul.order-base i.icon-3{background-image: url(../images/user-index-nav-order-icon-3.png);}
+ ul.order-base i.icon-100{background-image: url(../images/user-index-nav-order-icon-100.png);}
+ ul.order-base li span.am-badge{position: absolute; top: -7px; left: 55%;}
+
+ /**
+ * PC
+ */
+@media only screen and (min-width: 641px) {
+    .user-base-left, .user-avatar, .user-base-left .items{float: left;}
+    .user-base-right{float: right;}
+    .user-base-left .items{margin-left: 15px;}
+    .user-base-left .items a{display: block; line-height: 28px;}
+    ul.user-base-icon{bottom: 20px; right: 10px;}
+    ul.user-base-icon li{float: left; padding: 5px 20px; text-align: center;}
+    ul.user-base-icon li p{font-weight: 500;}
+}
+
+/**
+ * 手机
+ */
+@media only screen and (max-width:640px) {
+    .am-footer{padding-bottom: 55px;}
+    .nav-search{display: none;} .user-main{padding-top: 0;}
+    .user-content-body{padding: 0;}
+    .user-base{text-align: center; height: 210px;}
+    .user-avatar{margin-bottom: 10px; }
+    .user-base-left .items a:not(:last-child){margin-right: 20px;}
+    .user-base-right{position: absolute; right: 10px; top: 10px;}
+    ul.user-base-icon{left: 0; bottom: 0; width: 100%; padding: 5px 0;}
+    ul.user-base-icon li{float: left; width: 25%;}
+    .user-center-notice { margin: 0; }
+}
+</style>
+<!-- nav start -->
+{{include file="public/nav" /}}
+<!-- nav end -->
+
+<!-- header top nav -->
+{{include file="public/header_top_nav" /}}
+
+<!-- search -->
+{{include file="public/nav_search" /}}
+
+
+<!-- header nav -->
+{{include file="public/header_nav" /}}
+
+<!-- goods category -->
+{{include file="public/goods_category" /}}
+
+<!-- content -->
+<div class="am-container user-main">
+
+    <!-- user menu start -->
+    {{include file="public/user_menu" /}}
+    <!-- user menu end -->
+
+    <!-- content start -->
+    <div class="user-content">
+        <div class="user-content-body">
+
+            <!-- 基础信息 -->
+            <div class="user-base">
+                    <div class="user-base-left">
+                        <div class="user-avatar">
+                            我的余额
+                            <p class="user-name" style="font-size:50px;">{{$user.s_balance}}</p>
+                        </div>
+                        <div class="items">
+                            
+                                
+                        </div>
+                    </div>
+                    <div class="user-base-right">
+                        <a href="{{:MyUrl('index/message/index')}}" class="am-icon-bell-o message"> 消息 {{if $common_message_total gt 0}}{{$common_message_total}}{{/if}}</a>
+                    </div>
+                    <ul class="user-base-icon">
+                            <li>
+                                <a href="{{:MyUrl('index/order/index')}}">
+                                    <p>{{$user.s_balance}}</p>
+                                    <p>全部余额</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{:MyUrl('index/userfavor/goods')}}">
+                                    <p>0</p>
+                                    <p>锁定余额</p>
+                                </a>
+                            </li>
+                            
+                            <li>
+                                <a href="{{:MyUrl('index/userintegral/index')}}">
+                                    <p>有效</p>
+                                    <p>账户状态</p>
+                                </a>
+                            </li>
+                            <li >
+                                    <a href="{{:MyUrl('index/userbalance/withdraw')}}" style="margin-top:5px;" class="am-btn am-btn-default am-radius sign-default-submit"  data-view="reload" data-msg="确定要提现吗？">提现</a>
+                                </li>
+                        </ul>
+                </div>
+            <form class="am-form form-validation" method="post" action="{{:MyUrl('index/userbalance/index')}}" request-type="form" style="margin-top:5px;">
+                <div class="thin">
+                    <div class="am-input-group am-input-group-sm am-fl so">
+                        <input type="text" autocomplete="off" name="keywords" class="am-radius" placeholder="其实搜索很简单 ^_^！" value="{{if !empty($params.keywords)}}{{$params.keywords}}{{/if}}" />
+                        <span class="am-input-group-btn">
+                            <button class="am-btn am-btn-default am-radius" type="submit" data-am-loading="{spinner:'circle-o-notch', loadingText:'搜索中...'}">搜索</button>
+                        </span>
+                    </div>
+                    <label class="am-fl thin_sub more-submit">
+                        更多筛选条件
+                        <input type="checkbox" name="is_more" value="1" class="none am-field-valid" {{if isset($params['is_more'])}}checked{{/if}} />
+                        <i class="am-icon-angle-up"></i>
+                    </label>
+                </div>
+                <table class="so-list more-where {{if !isset($params['is_more'])}}none{{/if}}">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <span>类型：</span>
+                                <select name="type" class="chosen-select" data-placeholder="操作类型...">
+                                    <option value="-1">操作类型...</option>
+                                    {{if !empty($common_balance_log_type_list)}}
+                                        {{foreach $common_balance_log_type_list as $v}}
+                                            <option value="{{$v.id}}" {{if isset($params['type']) and $params['type'] eq $v['id']}}selected{{/if}}>{{$v.name}}</option>
+                                        {{/foreach}}
+                                    {{/if}}
+                                </select>
+                            </td>
+                            <td>
+                                <button type="submit" class="am-btn am-btn-primary am-radius am-btn-xs btn-loading-example" data-am-loading="{spinner:'circle-o-notch', loadingText:'搜索中...'}">搜索</button>
+                                <a href="{{:MyUrl('index/userbalance/index')}}" class="am-btn am-btn-warning am-radius am-btn-sm reset-submit">清除条件</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+
+            <!-- 消息列表 -->
+            <div class="data-list">
+                <table class="am-table">
+                    <thead>
+                        <tr>
+                            <th>操作类型</th>
+                            <th class="am-hide-sm-only">描述</th>
+                            <th>原始余额</th>
+                            <th>最新余额</th>
+                            <th class="am-hide-sm-only">时间</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{if !empty($data_list)}}
+                            {{foreach $data_list as $v}}
+                                <tr>
+                                    <td>{{$v.type_name}}</td>
+                                    <td class="am-hide-sm-only">{{$v.msg}}</td>
+                                    <td>{{$v.original_balance}}</td>
+                                    <td>{{$v.new_balance}}</td>
+                                    <td class="am-hide-sm-only">{{$v.add_time_time}}</td>
+                                </tr>
+                            {{/foreach}}
+                        {{/if}}
+                        {{if empty($data_list)}}
+                            <tr>
+                                <td colspan="5">
+                                    <div class="table-no"><i class="am-icon-warning"></i> 没有相关数据</div>
+                                </td>
+                            </tr>
+                        {{/if}}
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 分页 -->
+            {{if !empty($data_list)}}
+                {{$page_html|raw}}
+            {{/if}}
+        </div>
+    </div>
+    <!-- content end -->
+</div>
+
+<!-- footer start -->
+{{include file="public/footer" /}}
+<!-- footer end -->
