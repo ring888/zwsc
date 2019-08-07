@@ -1,25 +1,3 @@
-# ShopXO 国内领先企业级B2C免费开源电商系统！
-* 求实进取、创新专注、自主研发、国内领先企业级B2C电商系统解决方案。
-* 遵循Apache2开源协议发布，并提供免费使用。
-* PC+WAP、支付宝小程序、微信小程序、百度小程序。
-
-### 传送门
-* 官网地址：http://shopxo.net/
-* 演示地址：http://demo.shopxo.net/ （管理账户/密码可进入官网查看）
-* 支付宝小程序：http://shopxo.net/alipay.html （已发布）
-* 微信小程序：http://shopxo.net/ （已发布）
-
-### 安装教程
-* v1.2.0安装教程：https://ask.shopxo.net/article/5
-
-### 官方QQ群
-* 群号：833531593
-* 答案：shopxo.net
-
-### 源代码平台
-* Github：https://github.com/gongfuxiang/shopxo
-* 码云/开源中国：https://gitee.com/gongfuxiang/shopxo
-* 腾讯云开发者：https://dev.tencent.com/u/gongfuxiang/p/shopxo/git
 
 ### 扩展性
 * 独立模块式开发，完善的注释，易扩展。
